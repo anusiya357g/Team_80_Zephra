@@ -143,12 +143,9 @@ table_df = pd.DataFrame({
     "Payback": df["Payback"].apply(lambda v: f"{v:.1f} yrs")
 })
 
+# --- WITH THIS NEW ROBUST CODE ---
 st.dataframe(
-    table_df.style.applymap(
-        lambda val: "background-color: rgba(34, 197, 94, 0.15); color: #4ade80; font-weight: 600;" if "FUNDED" in str(val)
-        else ("background-color: rgba(239, 68, 68, 0.15); color: #f87171;" if "UNFUNDED" in str(val) else ""),
-        subset=["Status"]
-    ),
+    table_df,
     hide_index=True,
     use_container_width=True
 )
